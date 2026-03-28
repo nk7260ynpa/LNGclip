@@ -31,8 +31,8 @@
 
 ## 5. 日誌系統
 
-- [ ] 5.1 建立 src/logging_config.py（logging 設定，輸出至 logs/ 目錄與 console）
-- [ ] 5.2 在 API routes 與 RSS 同步服務中加入日誌記錄
+- [x] 5.1 建立 src/logging_config.py（logging 設定，輸出至 logs/ 目錄與 console）
+- [x] 5.2 在 API routes 與 RSS 同步服務中加入日誌記錄
 
 ## 6. 前端 React 專案
 
