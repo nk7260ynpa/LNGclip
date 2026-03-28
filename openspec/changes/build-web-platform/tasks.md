@@ -24,10 +24,10 @@
 
 ## 4. RSS 同步服務
 
-- [ ] 4.1 建立 src/services/rss_sync.py（RSS Feed 抓取與解析邏輯）
-- [ ] 4.2 實作影片去重寫入（以 video_id 判斷是否為新影片）
-- [ ] 4.3 建立 src/services/scheduler.py（APScheduler 排程設定，每日定時執行）
-- [ ] 4.4 整合排程器至 FastAPI 啟動/關閉事件
+- [x] 4.1 建立 src/services/rss_sync.py（RSS Feed 抓取與解析邏輯）
+- [x] 4.2 實作影片去重寫入（以 video_id 判斷是否為新影片）
+- [x] 4.3 建立 src/services/scheduler.py（APScheduler 排程設定，每日定時執行）
+- [x] 4.4 整合排程器至 FastAPI 啟動/關閉事件
 
 ## 5. 日誌系統
 
