@@ -16,11 +16,11 @@
 
 ## 3. 後端 API
 
-- [ ] 3.1 建立 src/main.py（FastAPI 入口、CORS 設定、啟動事件）
-- [ ] 3.2 建立 src/schemas/（Pydantic request/response schemas）
-- [ ] 3.3 建立 src/api/channels.py（頻道 CRUD API：GET/POST/PUT/DELETE/PATCH toggle）
-- [ ] 3.4 建立 src/api/videos.py（影片查詢 API：GET /api/channels/{id}/videos）
-- [ ] 3.5 建立 src/api/sync.py（手動同步 API：POST /api/channels/{id}/sync、POST /api/sync）
+- [x] 3.1 建立 src/main.py（FastAPI 入口、CORS 設定、啟動事件）
+- [x] 3.2 建立 src/schemas/（Pydantic request/response schemas）
+- [x] 3.3 建立 src/api/channels.py（頻道 CRUD API：GET/POST/PUT/DELETE/PATCH toggle）
+- [x] 3.4 建立 src/api/videos.py（影片查詢 API：GET /api/channels/{id}/videos）
+- [x] 3.5 建立 src/api/sync.py（手動同步 API：POST /api/channels/{id}/sync、POST /api/sync）
 
 ## 4. RSS 同步服務
 
