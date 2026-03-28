@@ -36,12 +36,12 @@
 
 ## 6. 前端 React 專案
 
-- [ ] 6.1 初始化 React 專案（frontend/，含 React Router 設定）
-- [ ] 6.2 建立 frontend/src/services/api.js（API 呼叫封裝）
-- [ ] 6.3 建立前台首頁（頻道卡片列表頁面）
-- [ ] 6.4 建立前台頻道詳細頁（影片列表頁面，點擊導向 YouTube）
-- [ ] 6.5 建立後台管理頁面（頻道表格、新增/編輯/刪除/啟用停用操作）
-- [ ] 6.6 設定 nginx 反向代理（前端靜態檔案 + API 轉發至 backend）
+- [x] 6.1 初始化 React 專案（frontend/，含 React Router 設定）
+- [x] 6.2 建立 frontend/src/services/api.js（API 呼叫封裝）
+- [x] 6.3 建立前台首頁（頻道卡片列表頁面）
+- [x] 6.4 建立前台頻道詳細頁（影片列表頁面，點擊導向 YouTube）
+- [x] 6.5 建立後台管理頁面（頻道表格、新增/編輯/刪除/啟用停用操作）
+- [x] 6.6 設定 nginx 反向代理（前端靜態檔案 + API 轉發至 backend）
 
 ## 7. 測試
 
