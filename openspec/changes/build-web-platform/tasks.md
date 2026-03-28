@@ -9,10 +9,10 @@
 
 ## 2. 資料庫與 ORM
 
-- [ ] 2.1 建立 src/config.py（資料庫連線、環境變數管理）
-- [ ] 2.2 建立 src/models/channel.py（channels 表 SQLAlchemy model）
-- [ ] 2.3 建立 src/models/video.py（videos 表 SQLAlchemy model，FK 關聯 channels）
-- [ ] 2.4 建立資料庫初始化邏輯（啟動時自動建表）
+- [x] 2.1 建立 src/config.py（資料庫連線、環境變數管理）
+- [x] 2.2 建立 src/models/channel.py（channels 表 SQLAlchemy model）
+- [x] 2.3 建立 src/models/video.py（videos 表 SQLAlchemy model，FK 關聯 channels）
+- [x] 2.4 建立資料庫初始化邏輯（啟動時自動建表）
 
 ## 3. 後端 API
 
