@@ -10,6 +10,7 @@ from src.models.channel import Channel
 from src.schemas.channel import ChannelCreate, ChannelResponse
 from src.services.url_parser import parse_channel_id
 from src.services.channel_metadata import fetch_channel_metadata
+from src.services.video_fetch import fetch_channel_videos
 
 logger = logging.getLogger(__name__)
 
@@ -65,6 +66,7 @@ def create_channel(data: ChannelCreate, db: Session = Depends(get_db)):
     logger.info("新增頻道：%s", channel.channel_id)
 
     _update_metadata(channel, db)
+    fetch_channel_videos(channel, db)
 
     return channel
 

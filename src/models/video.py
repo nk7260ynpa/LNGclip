@@ -15,7 +15,7 @@ class Video(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     channel_id = Column(Integer, ForeignKey("channels.id", ondelete="CASCADE"), nullable=False)
-    video_id = Column(String(11), unique=True, nullable=False)
+    video_id = Column(String(32), unique=True, nullable=False)
     title = Column(String, nullable=False)
     thumbnail = Column(String)
     published_at = Column(DateTime)
