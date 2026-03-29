@@ -32,3 +32,7 @@ export function fetchMetadata(id) {
 export function backfillChannels() {
   return request('/channels/backfill', { method: 'POST' });
 }
+
+export function getVideos(page = 1, perPage = 6) {
+  return request(`/videos?page=${page}&per_page=${perPage}`);
+}

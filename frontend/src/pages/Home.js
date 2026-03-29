@@ -1,39 +1,64 @@
 import { useState, useEffect } from 'react';
-import { getChannels } from '../services/api';
+import { getVideos } from '../services/api';
 
 function Home() {
-  const [channels, setChannels] = useState([]);
+  const [videos, setVideos] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getChannels()
-      .then(setChannels)
+    setLoading(true);
+    getVideos(page, 6)
+      .then((data) => {
+        setVideos(data.videos);
+        setTotalPages(data.total_pages);
+      })
       .catch(console.error)
       .finally(() => setLoading(false));
-  }, []);
+  }, [page]);
 
   if (loading) return <div className="empty-state">載入中...</div>;
 
-  if (channels.length === 0) {
-    return <div className="empty-state">尚無頻道</div>;
+  if (videos.length === 0) {
+    return <div className="empty-state">尚無影片</div>;
   }
 
   return (
     <div>
-      <h2>LNG 精華頻道</h2>
-      <div className="card-grid">
-        {channels.map((ch) => (
-          <div key={ch.id} className="card">
-            <div className="card-body">
-              <h3>{ch.channel_id}</h3>
-              <p>
-                <a href={ch.channel_url} target="_blank" rel="noopener noreferrer">
-                  前往 YouTube 頻道
-                </a>
-              </p>
+      <h2>LNG 精華影片</h2>
+      <div className="embed-grid">
+        {videos.map((v) => (
+          <div key={v.video_id} className="embed-card">
+            <div className="embed-wrapper">
+              <iframe
+                src={`https://www.youtube.com/embed/${v.video_id}`}
+                title={v.title}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
             </div>
+            <div className="embed-title">{v.title}</div>
           </div>
         ))}
+      </div>
+      <div className="pagination">
+        <button
+          className="btn btn-secondary"
+          disabled={page <= 1}
+          onClick={() => setPage(page - 1)}
+        >
+          上一頁
+        </button>
+        <span className="page-info">{page} / {totalPages}</span>
+        <button
+          className="btn btn-secondary"
+          disabled={page >= totalPages}
+          onClick={() => setPage(page + 1)}
+        >
+          下一頁
+        </button>
       </div>
     </div>
   );

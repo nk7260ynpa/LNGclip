@@ -8,6 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from src.logging_config import setup_logging
 from src.models import init_db
 from src.api.channels import router as channels_router
+from src.api.videos import router as videos_router
 
 logger = setup_logging()
 
@@ -38,6 +39,7 @@ app.add_middleware(
 )
 
 app.include_router(channels_router, prefix="/api")
+app.include_router(videos_router, prefix="/api")
 
 
 @app.get("/api/health")

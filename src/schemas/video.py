@@ -10,7 +10,7 @@ class VideoResponse(BaseModel):
     """影片回應 schema。"""
 
     id: int
-    channel_id: int
+    channel_id: str
     video_id: str
     title: str
     thumbnail: Optional[str] = None
