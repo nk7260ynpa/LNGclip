@@ -1,12 +1,12 @@
 ## Why
 
-目前後台新增頻道需要手動填入 5 個欄位（channel_id、channel_name、streamer、description、thumbnail），操作繁瑣。簡化為只需貼上 YouTube 頻道網址，後端自動解析 channel_id 並存入資料庫，大幅降低管理門檻。
+目前後台新增頻道需要手動填入 5 個欄位（channel_id、channel_name、streamer、description、thumbnail），操作繁瑣。簡化為只需貼上 YouTube 頻道網址（預設 `@handle` 格式），後端自動解析識別碼並存入資料庫，大幅降低管理門檻。
 
 ## What Changes
 
 - **BREAKING** 簡化 channels 資料表，僅保留 `id`、`channel_id`、`channel_url` 三個欄位，移除 `channel_name`、`streamer`、`description`、`thumbnail`、`is_active`、`updated_at`
 - 後台新增頻道改為只輸入 YouTube 頻道網址
-- 後端新增 URL 解析邏輯，從網址提取 channel_id
+- 後端新增 URL 解析邏輯，支援 `@handle`（預設）與 `/channel/UCxxxxxxx` 兩種格式
 - 移除新增頻道時自動觸發 RSS 同步的行為
 - 暫時停用前台頁面、RSS 排程同步功能（之後再規劃）
 
@@ -14,7 +14,7 @@
 
 ### New Capabilities
 
-- `url-parse`: 從 YouTube 頻道網址解析出 channel_id，支援多種 URL 格式
+- `url-parse`: 從 YouTube 頻道網址解析出識別碼，預設支援 `@handle` 格式，同時相容 `/channel/UCxxxxxxx` 格式
 
 ### Modified Capabilities
 
