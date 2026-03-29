@@ -12,7 +12,7 @@
 #### Scenario: 服務埠號
 
 - **WHEN** 所有 container 啟動完成
-- **THEN** frontend 對外開放 port 3000，backend 對外開放 port 8000，postgres 僅限內部網路存取
+- **THEN** frontend 對外開放 port 3001，backend 對外開放 port 8001，postgres 對外開放 port 5433
 
 ### Requirement: 後端 Docker 映像
 
