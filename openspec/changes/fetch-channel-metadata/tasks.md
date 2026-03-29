@@ -6,7 +6,7 @@
 
 ## 2. 元資料抓取服務
 
-- [ ] 2.1 新增 src/services/channel_metadata.py（使用 yt-dlp 抓取頻道名稱、訂閱數、影片數）
+- [x] 2.1 新增 src/services/channel_metadata.py（使用 yt-dlp 抓取頻道名稱、訂閱數、影片數）
 
 ## 3. API 調整
 
