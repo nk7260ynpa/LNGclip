@@ -38,3 +38,7 @@ export function getVideos(page = 1, perPage = 9, search) {
   if (search) url += `&search=${encodeURIComponent(search)}`;
   return request(url);
 }
+
+export function triggerCrawl() {
+  return request('/crawl', { method: 'POST' });
+}

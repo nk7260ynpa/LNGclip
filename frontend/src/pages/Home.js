@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { getVideos } from '../services/api';
+import { useState, useEffect, useCallback } from 'react';
+import { getVideos, triggerCrawl } from '../services/api';
 
 function Home() {
   const [videos, setVideos] = useState([]);
@@ -8,8 +8,9 @@ function Home() {
   const [loading, setLoading] = useState(true);
   const [searchInput, setSearchInput] = useState('');
   const [search, setSearch] = useState('');
+  const [crawling, setCrawling] = useState(false);
 
-  useEffect(() => {
+  const loadVideos = useCallback(() => {
     setLoading(true);
     getVideos(page, 9, search || undefined)
       .then((data) => {
@@ -20,15 +21,44 @@ function Home() {
       .finally(() => setLoading(false));
   }, [page, search]);
 
+  useEffect(() => {
+    loadVideos();
+  }, [loadVideos]);
+
   const handleSearch = (e) => {
     e.preventDefault();
     setPage(1);
     setSearch(searchInput);
   };
 
+  const handleCrawl = async () => {
+    setCrawling(true);
+    try {
+      const result = await triggerCrawl();
+      alert(
+        `檢查完成：${result.channels_processed} 個頻道，新增 ${result.total_new_videos} 部影片（耗時 ${result.elapsed_seconds} 秒）`
+      );
+      setPage(1);
+      loadVideos();
+    } catch (err) {
+      alert(`檢查失敗：${err.message}`);
+    } finally {
+      setCrawling(false);
+    }
+  };
+
   return (
     <div>
-      <h2>LNG 精華影片</h2>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h2>LNG 精華影片</h2>
+        <button
+          className="btn btn-primary"
+          onClick={handleCrawl}
+          disabled={crawling}
+        >
+          {crawling ? '檢查中...' : '檢查新影片'}
+        </button>
+      </div>
       <form className="search-bar" onSubmit={handleSearch}>
         <input
           type="text"
