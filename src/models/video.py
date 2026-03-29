@@ -14,7 +14,7 @@ class Video(Base):
     __tablename__ = "videos"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    channel_id = Column(Integer, ForeignKey("channels.id", ondelete="CASCADE"), nullable=False)
+    channel_id = Column(String(24), ForeignKey("channels.channel_id", ondelete="CASCADE"), nullable=False)
     video_id = Column(String(32), unique=True, nullable=False)
     title = Column(String, nullable=False)
     thumbnail = Column(String)

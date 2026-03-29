@@ -1,10 +1,12 @@
 ## 1. DB Model 調整
 
 - [x] 1.1 src/models/video.py：video_id 從 VARCHAR(11) 改為 VARCHAR(32)
+- [x] 1.2 src/models/video.py：channel_id FK 改為 VARCHAR 參照 channels.channel_id
 
 ## 2. 影片抓取服務
 
 - [x] 2.1 新增 src/services/video_fetch.py（yt-dlp 抓取頻道最新 30 部影片並寫入 DB）
+- [x] 2.2 video_fetch.py：寫入影片時 channel_id 改用 channels.channel_id 值
 
 ## 3. API 整合
 

@@ -18,4 +18,9 @@ class Channel(Base):
     subscriber_count = Column(Integer, nullable=True)
     video_count = Column(Integer, nullable=True)
 
-    videos = relationship("Video", back_populates="channel", cascade="all, delete-orphan")
+    videos = relationship(
+        "Video",
+        back_populates="channel",
+        cascade="all, delete-orphan",
+        foreign_keys="[Video.channel_id]",
+    )

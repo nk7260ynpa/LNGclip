@@ -7,6 +7,7 @@ videos 表已存在但為空，RSS 同步已停用。需要在新增頻道時用
 **Goals:**
 
 - video_id 放寬為 VARCHAR(32)
+- videos.channel_id 改為 VARCHAR FK 參照 channels.channel_id，使兩表 channel_id 語意一致
 - 新增頻道時自動抓取最新 30 部影片
 - 影片資料寫入 videos 表（去重）
 

@@ -47,7 +47,7 @@ def fetch_channel_videos(channel: Channel, db: Session, limit: int = 30) -> int:
     existing_ids = {
         v.video_id
         for v in db.query(Video.video_id)
-        .filter(Video.channel_id == channel.id)
+        .filter(Video.channel_id == channel.channel_id)
         .all()
     }
 
@@ -68,7 +68,7 @@ def fetch_channel_videos(channel: Channel, db: Session, limit: int = 30) -> int:
         thumbnail = f"https://i.ytimg.com/vi/{video_id}/mqdefault.jpg"
 
         video = Video(
-            channel_id=channel.id,
+            channel_id=channel.channel_id,
             video_id=video_id,
             title=entry.get("title", ""),
             thumbnail=thumbnail,

@@ -5,6 +5,7 @@
 ## What Changes
 
 - `video_id` 欄位從 VARCHAR(11) 放寬為 VARCHAR(32)
+- videos 表的 `channel_id` FK 改為 VARCHAR 參照 `channels.channel_id`，使兩表的 channel_id 語意一致
 - 新增頻道時，使用 yt-dlp 自動抓取該頻道最新 30 部影片的資訊並寫入 videos 表
 - 新增影片抓取服務，從 yt-dlp 取得影片 ID、標題、縮圖、發佈時間
 
