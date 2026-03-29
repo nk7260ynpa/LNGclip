@@ -9,15 +9,15 @@
 - **WHEN** 前端發送 `GET /api/channels`
 - **THEN** 回傳所有頻道列表（id、channel_id、channel_url、channel_name、subscriber_count、video_count）
 
-#### Scenario: 新增頻道
+#### Scenario: 新增並抓取影片
 
-- **WHEN** 前端發送 `POST /api/channels` 包含 `url` 欄位
-- **THEN** 系統解析 URL、建立記錄、自動抓取元資料並更新 channel_name、subscriber_count、video_count
+- **WHEN** 前端發送 `POST /api/channels` 新增頻道
+- **THEN** 系統建立頻道記錄、抓取元資料、抓取最新 30 部影片並寫入 videos 表
 
-#### Scenario: 新增但抓取失敗
+#### Scenario: 影片抓取失敗
 
-- **WHEN** 前端發送 `POST /api/channels` 且元資料抓取失敗
-- **THEN** 仍建立頻道記錄（新欄位為 NULL），回傳 201
+- **WHEN** 影片抓取失敗
+- **THEN** 頻道記錄仍保留，影片數為 0
 
 #### Scenario: 新增頻道 URL 無效
 
@@ -37,6 +37,20 @@
 
 - **WHEN** 前端發送 `POST /api/channels/{id}/fetch-metadata`
 - **THEN** 系統抓取該頻道元資料並更新 DB，回傳更新後的頻道資料
+
+### Requirement: 全域影片查詢 API
+
+後端 SHALL 提供跨頻道的影片分頁查詢 API。
+
+#### Scenario: 分頁查詢
+
+- **WHEN** 前端發送 `GET /api/videos?page=1&per_page=6`
+- **THEN** 回傳依 published_at 倒序排列的影片列表，包含總筆數與總頁數
+
+#### Scenario: 預設分頁
+
+- **WHEN** 前端發送 `GET /api/videos` 未帶分頁參數
+- **THEN** 預設 page=1、per_page=6
 
 ### Requirement: Backfill API
 
