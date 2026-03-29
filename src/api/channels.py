@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 from src.models import get_db
 from src.models.channel import Channel
 from src.schemas.channel import ChannelCreate, ChannelResponse
-from src.services.url_parser import parse_channel_id
+from src.services.url_parser import parse_channel_id, normalize_channel_url
 from src.services.channel_metadata import fetch_channel_metadata
 from src.services.video_fetch import fetch_channel_videos
 
@@ -58,7 +58,7 @@ def create_channel(data: ChannelCreate, db: Session = Depends(get_db)):
 
     channel = Channel(
         channel_id=channel_id,
-        channel_url=data.url.strip(),
+        channel_url=normalize_channel_url(data.url, channel_id),
     )
     db.add(channel)
     db.commit()

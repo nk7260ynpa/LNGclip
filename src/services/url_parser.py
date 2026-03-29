@@ -37,3 +37,18 @@ def parse_channel_id(url: str) -> str:
     raise ValueError(
         "無法解析此網址，請使用 https://www.youtube.com/@handle 格式"
     )
+
+
+def normalize_channel_url(url: str, channel_id: str) -> str:
+    """將使用者輸入的 URL 正規化為乾淨的頻道根 URL。
+
+    Args:
+        url: 使用者輸入的原始網址。
+        channel_id: 解析出的頻道識別碼。
+
+    Returns:
+        正規化後的頻道 URL。
+    """
+    if channel_id.startswith("@"):
+        return f"https://www.youtube.com/{channel_id}"
+    return f"https://www.youtube.com/channel/{channel_id}"
