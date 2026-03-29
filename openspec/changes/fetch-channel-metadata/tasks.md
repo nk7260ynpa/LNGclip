@@ -22,5 +22,5 @@
 
 ## 5. 測試與部署
 
-- [ ] 5.1 更新 tests/test_channels_api.py
-- [ ] 5.2 重建 Docker image 並驗證功能
+- [x] 5.1 更新 tests/test_channels_api.py
+- [x] 5.2 重建 Docker image 並驗證功能
