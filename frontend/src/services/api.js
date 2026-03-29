@@ -24,3 +24,11 @@ export function createChannel(data) {
 export function deleteChannel(id) {
   return request(`/channels/${id}`, { method: 'DELETE' });
 }
+
+export function fetchMetadata(id) {
+  return request(`/channels/${id}/fetch-metadata`, { method: 'POST' });
+}
+
+export function backfillChannels() {
+  return request('/channels/backfill', { method: 'POST' });
+}

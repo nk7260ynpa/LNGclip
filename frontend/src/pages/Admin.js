@@ -1,5 +1,11 @@
 import { useState, useEffect, useCallback } from 'react';
-import { getChannels, createChannel, deleteChannel } from '../services/api';
+import {
+  getChannels,
+  createChannel,
+  deleteChannel,
+  fetchMetadata,
+  backfillChannels,
+} from '../services/api';
 
 function Admin() {
   const [channels, setChannels] = useState([]);
@@ -32,8 +38,8 @@ function Admin() {
     }
   };
 
-  const handleDelete = async (id, channelId) => {
-    if (!window.confirm(`確定要刪除頻道「${channelId}」嗎？`)) return;
+  const handleDelete = async (id, name) => {
+    if (!window.confirm(`確定要刪除頻道「${name || id}」嗎？`)) return;
     try {
       await deleteChannel(id);
       loadChannels();
@@ -42,15 +48,49 @@ function Admin() {
     }
   };
 
+  const handleFetchMetadata = async (id) => {
+    try {
+      await fetchMetadata(id);
+      loadChannels();
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
+  const handleBackfill = async () => {
+    try {
+      const result = await backfillChannels();
+      alert(`Backfill 完成：${result.success}/${result.total} 成功`);
+      loadChannels();
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
+  const formatCount = (count) => {
+    if (count == null) return '-';
+    if (count >= 10000) return `${(count / 10000).toFixed(1)} 萬`;
+    return count.toLocaleString();
+  };
+
   if (loading) return <div className="empty-state">載入中...</div>;
+
+  const hasMissing = channels.some((ch) => !ch.channel_name);
 
   return (
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
         <h2>頻道管理</h2>
-        <button className="btn btn-primary" onClick={() => { setError(''); setUrl(''); setShowModal(true); }}>
-          新增頻道
-        </button>
+        <div>
+          {hasMissing && (
+            <button className="btn btn-secondary" onClick={handleBackfill}>
+              補足資料
+            </button>
+          )}
+          <button className="btn btn-primary" onClick={() => { setError(''); setUrl(''); setShowModal(true); }}>
+            新增頻道
+          </button>
+        </div>
       </div>
 
       {channels.length === 0 ? (
@@ -59,24 +99,33 @@ function Admin() {
         <table className="admin-table">
           <thead>
             <tr>
+              <th>頻道名稱</th>
               <th>Channel ID</th>
-              <th>網址</th>
+              <th>訂閱數</th>
+              <th>影片數</th>
               <th>操作</th>
             </tr>
           </thead>
           <tbody>
             {channels.map((ch) => (
               <tr key={ch.id}>
-                <td>{ch.channel_id}</td>
+                <td>{ch.channel_name || <span style={{ color: '#999' }}>未取得</span>}</td>
                 <td>
                   <a href={ch.channel_url} target="_blank" rel="noopener noreferrer">
-                    {ch.channel_url}
+                    {ch.channel_id}
                   </a>
                 </td>
+                <td>{formatCount(ch.subscriber_count)}</td>
+                <td>{formatCount(ch.video_count)}</td>
                 <td>
+                  {!ch.channel_name && (
+                    <button className="btn btn-secondary" onClick={() => handleFetchMetadata(ch.id)}>
+                      抓取
+                    </button>
+                  )}
                   <button
                     className="btn btn-danger"
-                    onClick={() => handleDelete(ch.id, ch.channel_id)}
+                    onClick={() => handleDelete(ch.id, ch.channel_name || ch.channel_id)}
                   >
                     刪除
                   </button>

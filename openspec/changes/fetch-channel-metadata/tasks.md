@@ -16,9 +16,9 @@
 
 ## 4. 前端調整
 
-- [ ] 4.1 Admin.js 列表顯示頻道名稱、訂閱數、影片數
-- [ ] 4.2 Admin.js 未取得元資料的頻道顯示「抓取」按鈕
-- [ ] 4.3 api.js 新增 fetchMetadata 與 backfillChannels 函式
+- [x] 4.1 Admin.js 列表顯示頻道名稱、訂閱數、影片數
+- [x] 4.2 Admin.js 未取得元資料的頻道顯示「抓取」按鈕
+- [x] 4.3 api.js 新增 fetchMetadata 與 backfillChannels 函式
 
 ## 5. 測試與部署
 
