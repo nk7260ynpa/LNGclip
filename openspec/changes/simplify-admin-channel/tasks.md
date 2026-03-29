@@ -19,6 +19,6 @@
 
 ## 4. 測試與收尾
 
-- [ ] 4.1 更新 tests/test_channels_api.py（配合新 schema 調整測試案例）
-- [ ] 4.2 更新 tests/test_rss_sync.py（暫時跳過或移除）
-- [ ] 4.3 重新建置並啟動 Docker 服務驗證功能
+- [x] 4.1 更新 tests/test_channels_api.py（配合新 schema 調整測試案例）
+- [x] 4.2 更新 tests/test_rss_sync.py（暫時跳過或移除）
+- [x] 4.3 重新建置並啟動 Docker 服務驗證功能
