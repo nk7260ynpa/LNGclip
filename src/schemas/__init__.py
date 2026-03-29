@@ -2,7 +2,6 @@
 
 from src.schemas.channel import (
     ChannelCreate,
-    ChannelUpdate,
     ChannelResponse,
 )
 from src.schemas.video import VideoResponse
