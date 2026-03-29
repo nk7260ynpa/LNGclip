@@ -26,8 +26,9 @@ def fetch_channel_videos(channel: Channel, db: Session, limit: int = 30) -> int:
     opts = {
         "quiet": True,
         "no_warnings": True,
-        "extract_flat": True,
         "playlistend": limit,
+        "extract_flat": False,
+        "ignoreerrors": True,
     }
 
     try:
@@ -53,6 +54,8 @@ def fetch_channel_videos(channel: Channel, db: Session, limit: int = 30) -> int:
 
     new_count = 0
     for entry in entries:
+        if entry is None:
+            continue
         video_id = entry.get("id", "")
         if not video_id or video_id in existing_ids:
             continue
