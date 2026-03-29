@@ -1,0 +1,22 @@
+FROM python:3.12-slim
+
+RUN apt-get update && apt-get install -y --no-install-recommends cron \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY src/ ./src/
+
+# 設定 crontab：每 3 天 06:00 執行
+RUN echo "0 6 */3 * * cd /app && python -m src.crawler >> /app/logs/crawler.log 2>&1" > /etc/cron.d/crawler \
+    && chmod 0644 /etc/cron.d/crawler \
+    && crontab /etc/cron.d/crawler
+
+# 確保 logs 目錄存在
+RUN mkdir -p /app/logs
+
+# 將環境變數傳遞給 cron（cron 不繼承環境變數）
+CMD ["sh", "-c", "printenv > /etc/environment && cron -f"]
