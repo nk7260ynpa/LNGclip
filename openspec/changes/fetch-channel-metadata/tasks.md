@@ -10,9 +10,9 @@
 
 ## 3. API 調整
 
-- [ ] 3.1 src/api/channels.py：新增頻道後自動呼叫元資料抓取
-- [ ] 3.2 src/api/channels.py：新增 POST /api/channels/{id}/fetch-metadata
-- [ ] 3.3 src/api/channels.py：新增 POST /api/channels/backfill
+- [x] 3.1 src/api/channels.py：新增頻道後自動呼叫元資料抓取
+- [x] 3.2 src/api/channels.py：新增 POST /api/channels/{id}/fetch-metadata
+- [x] 3.3 src/api/channels.py：新增 POST /api/channels/backfill
 
 ## 4. 前端調整
 
