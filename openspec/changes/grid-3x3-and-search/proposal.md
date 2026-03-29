@@ -8,6 +8,7 @@
 - 確保影片依 published_at 倒序排列（最新上傳排最前）
 - 新增搜尋列，支援依影片標題模糊搜尋
 - 後端影片 API 新增 search query parameter
+- 縮小標題「LNG 精華影片」與頂部導覽列之間的間距（padding 24px → 4px）
 
 ## Capabilities
 
@@ -24,3 +25,4 @@
 
 - `frontend/src/pages/Home.js`：per_page 改為 9，新增搜尋輸入框
 - `src/api/videos.py`：新增 search query parameter
+- `frontend/src/App.css`：調整 App-main 上方間距
