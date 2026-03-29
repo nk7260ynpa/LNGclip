@@ -14,6 +14,6 @@ mkdir -p "${SCRIPT_DIR}/logs"
 docker compose -f "${COMPOSE_FILE}" up --build -d
 
 echo "LNGclip 服務已啟動："
-echo "  前台：http://localhost:3000"
-echo "  後端 API：http://localhost:8000"
-echo "  API 文件：http://localhost:8000/docs"
+echo "  前台：http://localhost:3001"
+echo "  後端 API：http://localhost:8001"
+echo "  API 文件：http://localhost:8001/docs"
