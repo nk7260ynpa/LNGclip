@@ -6,9 +6,9 @@
 
 ## 2. 後端 API 調整
 
-- [ ] 2.1 簡化 src/api/channels.py（保留 GET list、POST create、DELETE，移除 PUT、PATCH、get single）
-- [ ] 2.2 移除 src/api/videos.py 與 src/api/sync.py 的 router 註冊
-- [ ] 2.3 修改 src/main.py（移除排程器啟動、移除 sync/videos router）
+- [x] 2.1 簡化 src/api/channels.py（保留 GET list、POST create、DELETE，移除 PUT、PATCH、get single）
+- [x] 2.2 移除 src/api/videos.py 與 src/api/sync.py 的 router 註冊
+- [x] 2.3 修改 src/main.py（移除排程器啟動、移除 sync/videos router）
 
 ## 3. 前端調整
 
