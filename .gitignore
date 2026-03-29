@@ -215,3 +215,10 @@ plan/
 
 # Logs
 logs/
+
+# Frontend
+frontend/node_modules/
+frontend/build/
+
+# Test DB
+test.db

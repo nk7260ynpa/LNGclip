@@ -51,6 +51,6 @@
 
 ## 8. 文件與收尾
 
-- [ ] 8.1 更新 README.md（專案說明、架構圖、啟動方式、環境變數說明）
-- [ ] 8.2 更新 .gitignore（加入 frontend/node_modules/、frontend/build/ 等）
-- [ ] 8.3 更新 CLAUDE.md（同步最新專案架構與開發慣例）
+- [x] 8.1 更新 README.md（專案說明、架構圖、啟動方式、環境變數說明）
+- [x] 8.2 更新 .gitignore（加入 frontend/node_modules/、frontend/build/ 等）
+- [x] 8.3 更新 CLAUDE.md（同步最新專案架構與開發慣例）
