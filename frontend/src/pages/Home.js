@@ -29,18 +29,21 @@ function Home() {
       <h2>LNG 精華影片</h2>
       <div className="embed-grid">
         {videos.map((v) => (
-          <div key={v.video_id} className="embed-card">
-            <div className="embed-wrapper">
-              <iframe
-                src={`https://www.youtube.com/embed/${v.video_id}`}
-                title={v.title}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
+          <a
+            key={v.video_id}
+            className="thumb-card"
+            href={`https://www.youtube.com/watch?v=${v.video_id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="thumb-wrapper">
+              <img
+                src={v.thumbnail || `https://i.ytimg.com/vi/${v.video_id}/mqdefault.jpg`}
+                alt={v.title}
               />
             </div>
-            <div className="embed-title">{v.title}</div>
-          </div>
+            <div className="thumb-title">{v.title}</div>
+          </a>
         ))}
       </div>
       <div className="pagination">

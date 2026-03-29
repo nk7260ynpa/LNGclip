@@ -264,29 +264,35 @@
   }
 }
 
-.embed-card {
+.thumb-card {
   background: white;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: block;
 }
 
-.embed-wrapper {
-  position: relative;
+.thumb-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.thumb-wrapper {
   width: 100%;
-  padding-top: 56.25%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
 }
 
-.embed-wrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
+.thumb-wrapper img {
   width: 100%;
   height: 100%;
-  border: none;
+  object-fit: cover;
 }
 
-.embed-title {
+.thumb-title {
   padding: 10px 12px;
   font-size: 0.85rem;
   font-weight: 500;
