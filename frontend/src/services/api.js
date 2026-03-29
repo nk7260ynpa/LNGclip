@@ -33,6 +33,8 @@ export function backfillChannels() {
   return request('/channels/backfill', { method: 'POST' });
 }
 
-export function getVideos(page = 1, perPage = 6) {
-  return request(`/videos?page=${page}&per_page=${perPage}`);
+export function getVideos(page = 1, perPage = 9, search) {
+  let url = `/videos?page=${page}&per_page=${perPage}`;
+  if (search) url += `&search=${encodeURIComponent(search)}`;
+  return request(url);
 }
