@@ -14,5 +14,8 @@ class Channel(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     channel_id = Column(String(24), unique=True, nullable=False)
     channel_url = Column(String, nullable=False)
+    channel_name = Column(String, nullable=True)
+    subscriber_count = Column(Integer, nullable=True)
+    video_count = Column(Integer, nullable=True)
 
     videos = relationship("Video", back_populates="channel", cascade="all, delete-orphan")

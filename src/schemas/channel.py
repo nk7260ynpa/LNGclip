@@ -1,5 +1,7 @@
 """頻道相關的 Pydantic schemas。"""
 
+from typing import Optional
+
 from pydantic import BaseModel
 
 
@@ -15,5 +17,8 @@ class ChannelResponse(BaseModel):
     id: int
     channel_id: str
     channel_url: str
+    channel_name: Optional[str] = None
+    subscriber_count: Optional[int] = None
+    video_count: Optional[int] = None
 
     model_config = {"from_attributes": True}

@@ -1,8 +1,8 @@
 ## 1. 後端 Model 與依賴
 
-- [ ] 1.1 requirements.txt 新增 yt-dlp
-- [ ] 1.2 src/models/channel.py 新增 channel_name、subscriber_count、video_count 欄位（NULLABLE）
-- [ ] 1.3 src/schemas/channel.py ChannelResponse 新增對應欄位
+- [x] 1.1 requirements.txt 新增 yt-dlp
+- [x] 1.2 src/models/channel.py 新增 channel_name、subscriber_count、video_count 欄位（NULLABLE）
+- [x] 1.3 src/schemas/channel.py ChannelResponse 新增對應欄位
 
 ## 2. 元資料抓取服務
 
