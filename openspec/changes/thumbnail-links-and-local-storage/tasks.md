@@ -5,9 +5,9 @@
 
 ## 2. 本地目錄建立
 
-- [ ] 2.1 建立 images/ 資料夾（含 .gitkeep）
-- [ ] 2.2 建立 database/ 資料夾（含 .gitkeep）
-- [ ] 2.3 更新 .gitignore（排除 database/* 和 images/* 內容，保留 .gitkeep）
+- [x] 2.1 建立 images/ 資料夾（含 .gitkeep）
+- [x] 2.2 建立 database/ 資料夾（含 .gitkeep）
+- [x] 2.3 更新 .gitignore（排除 database/* 和 images/* 內容，保留 .gitkeep）
 
 ## 3. Docker 掛載調整
 

@@ -222,3 +222,11 @@ frontend/build/
 
 # Test DB
 test.db
+
+# Database (PostgreSQL data)
+database/*
+!database/.gitkeep
+
+# Images (thumbnail cache)
+images/*
+!images/.gitkeep
