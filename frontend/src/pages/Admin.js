@@ -99,7 +99,7 @@ function Admin() {
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
                   required
-                  placeholder="https://www.youtube.com/channel/UCxxxxxxx"
+                  placeholder="https://www.youtube.com/@handle"
                 />
               </div>
               <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
