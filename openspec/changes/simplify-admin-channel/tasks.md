@@ -12,10 +12,10 @@
 
 ## 3. 前端調整
 
-- [ ] 3.1 簡化 Admin.js（新增表單改為只輸入 URL，移除編輯/同步/啟停用按鈕）
-- [ ] 3.2 簡化 Home.js（暫時顯示 channel_id 列表）
-- [ ] 3.3 簡化 ChannelDetail.js（暫時顯示 channel_id 基本資訊）
-- [ ] 3.4 更新 api.js（移除不再使用的 API 呼叫函式）
+- [x] 3.1 簡化 Admin.js（新增表單改為只輸入 URL，移除編輯/同步/啟停用按鈕）
+- [x] 3.2 簡化 Home.js（暫時顯示 channel_id 列表）
+- [x] 3.3 簡化 ChannelDetail.js（暫時顯示 channel_id 基本資訊）
+- [x] 3.4 更新 api.js（移除不再使用的 API 呼叫函式）
 
 ## 4. 測試與收尾
 
