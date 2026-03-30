@@ -9,6 +9,11 @@
 - **WHEN** 系統對某頻道執行影片抓取
 - **THEN** 取得最新 30 部影片的 video_id、標題、縮圖、發佈時間，並以 video_id 去重後寫入 videos 表
 
+#### Scenario: 寫入影片並下載縮圖
+
+- **WHEN** 系統抓取到新影片並寫入 DB
+- **THEN** 同步下載縮圖到 images/{video_id}.jpg，thumbnail 欄位存本地路徑
+
 #### Scenario: 頻道影片不足 30 部
 
 - **WHEN** 頻道的一般影片少於 30 部

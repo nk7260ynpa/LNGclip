@@ -58,6 +58,11 @@
 - **WHEN** 影片列表載入完成
 - **THEN** 每張影片卡片包含縮圖、標題、發佈日期，點擊後開啟新分頁導向 YouTube 影片頁面
 
+#### Scenario: 縮圖來源
+
+- **WHEN** 影片列表載入完成
+- **THEN** 每張影片的縮圖從 `/api/images/{video_id}.jpg` 讀取
+
 #### Scenario: 頻道無影片
 
 - **WHEN** 該頻道尚無任何影片資料
