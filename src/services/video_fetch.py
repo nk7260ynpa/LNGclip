@@ -1,6 +1,8 @@
 """頻道影片抓取服務（使用 yt-dlp）。"""
 
 import logging
+import os
+import urllib.request
 from datetime import datetime
 
 import yt_dlp
@@ -10,6 +12,32 @@ from src.models.channel import Channel
 from src.models.video import Video
 
 logger = logging.getLogger(__name__)
+
+IMAGES_DIR = os.getenv("IMAGES_DIR", "images")
+
+
+def _download_thumbnail(video_id: str) -> str:
+    """下載影片縮圖到本地 images/ 目錄。
+
+    Args:
+        video_id: YouTube 影片 ID。
+
+    Returns:
+        本地路徑（成功）或 YouTube CDN URL（失敗時 fallback）。
+    """
+    cdn_url = f"https://i.ytimg.com/vi/{video_id}/mqdefault.jpg"
+    local_path = os.path.join(IMAGES_DIR, f"{video_id}.jpg")
+
+    if os.path.exists(local_path):
+        return f"/api/images/{video_id}.jpg"
+
+    try:
+        os.makedirs(IMAGES_DIR, exist_ok=True)
+        urllib.request.urlretrieve(cdn_url, local_path)
+        return f"/api/images/{video_id}.jpg"
+    except Exception:
+        logger.warning("縮圖下載失敗：%s", video_id)
+        return cdn_url
 
 
 def fetch_channel_videos(channel: Channel, db: Session, limit: int = 30) -> int:
@@ -68,7 +96,7 @@ def fetch_channel_videos(channel: Channel, db: Session, limit: int = 30) -> int:
             except ValueError:
                 pass
 
-        thumbnail = f"https://i.ytimg.com/vi/{video_id}/mqdefault.jpg"
+        thumbnail = _download_thumbnail(video_id)
 
         video = Video(
             channel_id=channel.channel_id,

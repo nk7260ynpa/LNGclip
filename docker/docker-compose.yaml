@@ -40,6 +40,7 @@ services:
       DATABASE_URL: postgresql://lngclip:lngclip@postgres:5432/lngclip
     volumes:
       - ../logs:/app/logs
+      - ../images:/app/images
     depends_on:
       postgres:
         condition: service_healthy

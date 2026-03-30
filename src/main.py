@@ -2,8 +2,11 @@
 
 from contextlib import asynccontextmanager
 
+import os
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 from src.logging_config import setup_logging
 from src.models import init_db
@@ -40,6 +43,10 @@ app.add_middleware(
 
 app.include_router(channels_router, prefix="/api")
 app.include_router(videos_router, prefix="/api")
+
+images_dir = os.getenv("IMAGES_DIR", "images")
+os.makedirs(images_dir, exist_ok=True)
+app.mount("/api/images", StaticFiles(directory=images_dir), name="images")
 
 
 @app.get("/api/health")
